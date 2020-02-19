@@ -29,7 +29,6 @@ public enum Ingredients {
     SALT(Classification.SEASONING, 0, 2),
     DILL(Classification.HERB, 253, 8),
     VINEGAR(Classification.SAUCE, 88, 3),
-    SALVIA(Classification.HERB, 315, 25),
     PEPPER(Classification.SEASONING, 263, 5);
 
 
