@@ -19,5 +19,4 @@ public class Vegetable extends Ingredient implements ICuttable {
         this.isCut = true;
     }
 
-
 }

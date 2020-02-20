@@ -29,9 +29,7 @@ public class Salad {
 
     @Override
     public String toString() {
-        return "Salad{" +
-                "name='" + name + '\'' +
-                ", salad=" + salad +
-                '}';
+        return name + System.lineSeparator() +
+                salad;
     }
 }

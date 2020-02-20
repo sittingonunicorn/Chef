@@ -1,7 +1,10 @@
 package view;
 
-public class TextConstanct {
+public interface TextConstant {
     String MENU = "menu";
+    String CHOOSE_ENGLISH = "To choose English please input 1.";
+    String CHOOSE_UKRAINIAN = "Щоб обрати українську мову, натисніть 2.";
+    String WRONG_INPUT = "Wrong input. Невірний ввод";
     String RUSSIAN_SALAD = "salad.russian";
     String VINAIGRETTE = "salad.vinaigrette";
     String SPRING_SALAD = "salad.spring";
@@ -31,5 +34,6 @@ public class TextConstanct {
     String DILL = "flavoring.dill";
     String VINEGAR = "flavoring.vinegar";
     String PEPPER = "flavoring.pepper";
+
 
 }
