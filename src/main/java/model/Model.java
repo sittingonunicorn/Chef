@@ -1,15 +1,26 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
+
     public int countCalories (List<Ingredient> salad){
-        int calories = 0;
+        double calories = 0;
         for (Ingredient ingredient: salad) {
             if (ingredient!=null){
-                calories+=ingredient.getCalories();
+                calories+=(ingredient.getCalories()*ingredient.getQuantity()/100.0);
             }
         }
-        return calories;
+        return (int)calories;
+    }
+    public List<Ingredient> getVegetablesCaloriesDiapason (List<Ingredient> salad, int min, int max){
+        List<Ingredient> result = new ArrayList<>();
+        for (Ingredient ingredient: salad) {
+            if (ingredient!=null&&ingredient.getCalories()>=min&&ingredient.getCalories()<=max){
+                result.add(ingredient);
+            }
+        }
+        return result;
     }
 }
