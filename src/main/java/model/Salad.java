@@ -29,7 +29,4 @@ public class Salad {
         return salad;
     }
 
-    public void setSalad(List<Ingredient> salad) {
-        this.salad = salad;
-    }
 }

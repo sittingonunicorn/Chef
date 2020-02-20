@@ -18,7 +18,14 @@ public class ChiefCook {
             new Vegetable(Ingredients.GREEN_ONION, 20), new Vegetable(Ingredients.RADISH, 20),
             new Ingredient(Ingredients.PEPPER, 5), new Ingredient(Ingredients.MAYONNAISE, 15));
 
-    public void cookSalad() {
-
-
-    }}
+    public boolean cookSalad(Salad salad) {
+        boolean isReady = true;
+        for (Ingredient component : salad.getSalad()) {
+            if (component.getClass() == Vegetable.class) {
+                ((Vegetable) component).cut();
+                isReady=((Vegetable) component).isCut();
+            }
+        }
+        return isReady;
+    }
+}
