@@ -12,7 +12,7 @@ public class Ingredient {
         this.name = name;
         this.calories = name.getCALORIES();
         this.classification = name.getCLASSIFICATION();
-        this.cost=name.getCOST();
+        this.cost = name.getCOST();
         this.quantity = quantity;
     }
 
@@ -40,5 +40,8 @@ public class Ingredient {
         this.quantity = quantity;
     }
 
-
+    @Override
+    public String toString() {
+        return name.toString();
+    }
 }

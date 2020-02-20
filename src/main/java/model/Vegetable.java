@@ -18,4 +18,6 @@ public class Vegetable extends Ingredient implements ICuttable {
     public void cut() {
         this.isCut = true;
     }
+
+
 }

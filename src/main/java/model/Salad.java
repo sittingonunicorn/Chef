@@ -7,13 +7,11 @@ public class Salad {
     private String name;
     private List<Ingredient> salad;
 
-    public Salad(String name, Ingredient... ingredients) {
+    public Salad(String name, Ingredient... components) {
         this.name = name;
-        List<Ingredient> salad = new ArrayList<>();
-        for (Ingredient ingredient : ingredients) {
-            if (ingredient != null) {
-                salad.add(ingredient);
-            }
+        salad = new ArrayList<Ingredient>();
+        for (Ingredient i : components) {
+            this.salad.add(i);
         }
     }
 
@@ -29,4 +27,11 @@ public class Salad {
         return salad;
     }
 
+    @Override
+    public String toString() {
+        return "Salad{" +
+                "name='" + name + '\'' +
+                ", salad=" + salad +
+                '}';
+    }
 }

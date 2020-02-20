@@ -8,6 +8,7 @@ public class ChiefCook {
     private List<Ingredient> salad = new ArrayList<>();
 
     public ChiefCook(List<Ingredient> salad) {
+
         for (Ingredient ingredient :
                 salad) {
             this.salad.add(ingredient);

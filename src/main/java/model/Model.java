@@ -9,7 +9,7 @@ public class Model {
         double calories = 0;
         for (Ingredient ingredient: salad) {
             if (ingredient!=null){
-                calories+=(ingredient.getCalories()*ingredient.getQuantity()/100.0);
+                calories+=Math.round(ingredient.getCalories()*ingredient.getQuantity()/100.0);
             }
         }
         return (int)calories;

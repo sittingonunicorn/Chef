@@ -14,17 +14,9 @@
 //11. Код должен содержать комментарии.
 //12. Должны присутствовать JUnit – тесты.
 
-
-import model.Vegetables;
-
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-
 public class Main {
     public static void main(String[] args) {
-        Set<Vegetables> salad = EnumSet.allOf(Vegetables.class);
+
 
     }
 }
