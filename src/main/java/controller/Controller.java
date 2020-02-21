@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Control class, that gets:
+ * Control class, that gets Model and View objects. Leads all the process for program.
  *
  */
 public class Controller {
@@ -25,8 +25,12 @@ public class Controller {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Method gets from console variable to select language of user interface
+     * @return int language
+     */
     public String selectLanguage() {
-        String inputString;
+        String language;
         view.printMessage(View.CHOOSE_ENGLISH);
         view.printMessage(View.CHOOSE_UKRAINIAN);
         for (; ; ) {
@@ -36,7 +40,7 @@ public class Controller {
                 view.printMessage(View.CHOOSE_UKRAINIAN);
                 sc.next();
             }
-            if (!((inputString = sc.nextLine()).equals("1") || inputString.equals("2"))) {
+            if (!((language = sc.nextLine()).equals("1") || language.equals("2"))) {
                 view.printMessage(View.WRONG_INPUT_INTERNATIONAL);
                 view.printMessage(View.CHOOSE_ENGLISH);
                 view.printMessage(View.CHOOSE_UKRAINIAN);
@@ -44,47 +48,56 @@ public class Controller {
             }
             break;
         }
-        return inputString;
+        return language;
     }
 
+    /**
+     * Core method of program. Calls all the rest of methods
+     */
     public void processUser() {
         this.view.setBundle(selectLanguage());
-        coreDialog();
+        coreRun();
 
 
     }
 
-    private void coreDialog() {
+    /**
+     * Core run of the program. Calls the main menu, creates object of ChiefCook, and calls info menu.
+     */
+    private void coreRun() {
         int mainMenu = 0;
-        int infoMenu = 0;
         ChiefCook chiefCook = null;
-        Menu menu = new Menu();
         while (mainMenu == 0) {
             view.printEmptyString();
             view.printStringInput("message.read.menu");
-            infoMenu = mainMenu();
-            chiefCook = new ChiefCook(Menu.menuToArray()[infoMenu - 1], Menu.getSalad(infoMenu - 1));
-            mainMenu = infoMenu;
+            mainMenu = mainMenu();
+            chiefCook = new ChiefCook(Menu.menuToArray()[mainMenu - 1], Menu.getSalad(mainMenu - 1));
         }
 
         infoMenu (chiefCook);
     }
 
-
-    private int infoMenu(ChiefCook chiefCook) {
+    /**
+     * Provides user the choice of acts with chosen salad.
+     * @param chiefCook
+     */
+    private void infoMenu(ChiefCook chiefCook) {
         view.printStringInput(chiefCook.getName());
         view.printEmptyString();
         view.printInfoMenu();
         view.printStringInput("message.choose.menu");
         int infoMenu = getNumberConsole(0,5);
         if (infoMenu == 0) {
-            coreDialog();
+            coreRun();
         }
         getInfo(infoMenu, chiefCook);
-        return infoMenu;
     }
 
-
+    /**
+     * Calls the methods to perform the requested action with salad.
+     * @param infoMenu
+     * @param chiefCook
+     */
     private void getInfo(int infoMenu, ChiefCook chiefCook) {
         List<Ingredient> ingredients = chiefCook.getSalad();
         switch (infoMenu) {
@@ -114,20 +127,32 @@ public class Controller {
 
     }
 
+    /**
+     * Provides menu to choose if program should end its work or continue.
+     * @param chiefCook
+     */
     private void endMenu(ChiefCook chiefCook) {
         view.printEndMenu();
         int x = getNumberConsole(0,2);
         if (x == 1) {
-            coreDialog();
+            coreRun();
         } else if (x == 2) {
             infoMenu(chiefCook);
         }
     }
 
+    /**
+     * Outputs calorific value of each ingredient.
+     * @param ingredients
+     */
     private void outputCalorificValue(List<Ingredient> ingredients) {
         view.printIntAndStringInput(model.countCalories(ingredients), view.CALORIES_PORTION);
     }
 
+    /**
+     * Outputs the vegetables with calorific values in chosen diapason.
+     * @param ingredients
+     */
     private void outputDiapason(List<Ingredient> ingredients) {
         int min ;
         int max ;
@@ -148,36 +173,47 @@ public class Controller {
                 view.printStringInput(View.WRONG_INPUT);
                 continue;
             }
-
             break;
         }
         List<Ingredient> result = model.getVegetablesCaloriesDiapason(ingredients, min, max);
         if (result.size() == 0) {
             view.printStringInput(view.NO_VEGETABLES_FOUND);
-
         } else {
             view.printIngredientsCalories(result);
         }
-
     }
 
+    /**
+     * Sorts and outputs salads ingredients by calorific value.
+     * @param ingredients
+     */
     private void sortByCalories(List<Ingredient> ingredients) {
         ingredients.sort((v1, v2) -> v1.getCalories() - v2.getCalories());
         view.printIngredientsCalories(ingredients);
     }
-
+    /**
+     * Sorts and outputs salads ingredients by cost.
+     * @param ingredients
+     */
     private void sortByCost(List<Ingredient> ingredients) {
         ingredients.sort((v1, v2) -> v1.getCost() - v2.getCost());
         view.printIngredientsCost(ingredients);
     }
 
+    /**
+     * Calls the method cookSalad() of ChiefCook.
+     * @param chiefCook
+     */
     private void cooking(ChiefCook chiefCook) {
         chiefCook.cookSalad();
         view.printStringInput(view.SALAD_IS_READY);
     }
 
+    /**
+     * Forms main menu from Menu.
+     * @return
+     */
     private int mainMenu() {
-
         view.printMessage(view.menuToPrint(Menu.menuToArray()));
         view.concatenationString();
         view.printStringInput("message.choose.menu");
@@ -185,6 +221,12 @@ public class Controller {
 
     }
 
+    /**
+     * Gets min and max values from console.
+     * @param min
+     * @param max
+     * @return
+     */
     public int getNumberConsole(int min, int max) {
         int inputNumber;
         for (; ; ) {
