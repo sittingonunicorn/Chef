@@ -6,6 +6,7 @@ public interface TextConstant {
     String CHOOSE_UKRAINIAN = "Щоб обрати українську мову, натисніть 2.";
     String WRONG_INPUT_INTERNATIONAL = "Wrong input number. Невірно введений номер.";
     String WRONG_INPUT = "message.input.wrong";
+    String CHOOSE_MENU= "message.choose.menu";
     String CALORIES_PORTION = "message.calories.portion";
     String NO_VEGETABLES_FOUND = "message.no.vegetables.found";
     String SORT_BY_CALORIES = "message.sort.by.calories";
@@ -15,6 +16,7 @@ public interface TextConstant {
     String GET_VEGETABLES_DIAPASON = "message.get.vegetables.calories.diapason";
     String COUNT_CALORIES = "message.count.calories";
     String BACK_TO_MAIN_MENU = "message.back.to.main.menu";
+    String SEE_INGREDIENTS = "message.see.ingredients" ;
 
 
 

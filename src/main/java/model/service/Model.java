@@ -28,4 +28,35 @@ public class Model {
         }
         return result;
     }
+
+    /**
+     * Sorts and outputs salads ingredients by cost.
+     *
+     * @param ingredients - chosen salad
+     */
+    public void sortByCost(List<Ingredient> ingredients) {
+        ingredients.sort((v1, v2) -> v1.getCost() - v2.getCost());
+
+    }
+
+    /**
+     * Sorts and outputs salads ingredients by calorific value.
+     *
+     * @param ingredients - chosen salad
+     */
+    public void sortByCalories(List<Ingredient> ingredients) {
+        ingredients.sort((v1, v2) -> v1.getCalories() - v2.getCalories());
+
+    }
+
+
+    /**
+     * Calls the method cookSalad() of ChiefCook.
+     *
+     * @param chiefCook - instance of ChiefCook with chosen salad
+     */
+    public void cooking(ChiefCook chiefCook) {
+        chiefCook.cookSalad();
+
+    }
 }

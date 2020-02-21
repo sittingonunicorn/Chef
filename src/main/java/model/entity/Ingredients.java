@@ -1,6 +1,5 @@
 package model.entity;
 
-
 public enum Ingredients {
     GREEN_PEAS("vegetable.green.peas", 72, 5),
     ZUCCHINI("vegetable.zucchini", 27, 7),

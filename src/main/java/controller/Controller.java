@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 /**
  * Control class, that gets Model and View objects. Leads all the process for program.
- *
  */
 public class Controller {
     private Model model;
@@ -27,6 +26,7 @@ public class Controller {
 
     /**
      * Method gets from console variable to select language of user interface
+     *
      * @return int language
      */
     public String selectLanguage() {
@@ -74,19 +74,20 @@ public class Controller {
             chiefCook = new ChiefCook(Menu.menuToArray()[mainMenu - 1], Menu.getSalad(mainMenu - 1));
         }
 
-        infoMenu (chiefCook);
+        infoMenu(chiefCook);
     }
 
     /**
      * Provides user the choice of acts with chosen salad.
+     *
      * @param chiefCook - instance of ChiefCook with chosen salad
      */
     private void infoMenu(ChiefCook chiefCook) {
         view.printStringInput(chiefCook.getName());
         view.printEmptyString();
         view.printInfoMenu();
-        view.printStringInput("message.choose.menu");
-        int infoMenu = getNumberConsole(0,5);
+        view.printStringInput(view.CHOOSE_MENU);
+        int infoMenu = getNumberConsole(0, 6);
         if (infoMenu == 0) {
             coreRun();
         }
@@ -95,22 +96,26 @@ public class Controller {
 
     /**
      * Calls the methods to perform the requested action with salad.
-     * @param infoMenu - number of chosen menu line
+     *
+     * @param infoMenu  - number of chosen menu line
      * @param chiefCook - instance of ChiefCook with chosen salad
      */
     private void getInfo(int infoMenu, ChiefCook chiefCook) {
         List<Ingredient> ingredients = chiefCook.getSalad();
         switch (infoMenu) {
             case 1: {
-                cooking(chiefCook);
+                model.cooking(chiefCook);
+                view.printStringInput(view.SALAD_IS_READY);
                 break;
             }
             case 2: {
-                sortByCost(ingredients);
+                model.sortByCost(ingredients);
+                view.printIngredientsCost(ingredients);
                 break;
             }
             case 3: {
-                sortByCalories(ingredients);
+                model.sortByCalories(ingredients);
+                view.printIngredientsCalories(ingredients);
                 break;
             }
             case 4: {
@@ -121,6 +126,10 @@ public class Controller {
                 outputCalorificValue(ingredients);
                 break;
             }
+            case 6: {
+                view.printIngredients(ingredients);
+                break;
+            }
 
         }
         endMenu(chiefCook);
@@ -129,12 +138,13 @@ public class Controller {
 
     /**
      * Provides menu to choose if program should end its work or continue.
+     *
      * @param chiefCook - instance of ChiefCook with chosen salad
      */
     private void endMenu(ChiefCook chiefCook) {
         view.printEmptyString();
         view.printEndMenu();
-        int x = getNumberConsole(0,2);
+        int x = getNumberConsole(0, 2);
         if (x == 1) {
             coreRun();
         } else if (x == 2) {
@@ -144,6 +154,7 @@ public class Controller {
 
     /**
      * Outputs calorific value of each ingredient.
+     *
      * @param ingredients - chosen salad
      */
     private void outputCalorificValue(List<Ingredient> ingredients) {
@@ -152,11 +163,12 @@ public class Controller {
 
     /**
      * Outputs the vegetables with calorific values in chosen diapason.
+     *
      * @param ingredients - chosen salad
      */
     private void outputDiapason(List<Ingredient> ingredients) {
-        int min ;
-        int max ;
+        int min;
+        int max;
         for (; ; ) {
             view.printStringInput("message.input.minimum");
             while (!sc.hasNextInt()) {
@@ -184,51 +196,28 @@ public class Controller {
         }
     }
 
-    /**
-     * Sorts and outputs salads ingredients by calorific value.
-     * @param ingredients - chosen salad
-     */
-    private void sortByCalories(List<Ingredient> ingredients) {
-        ingredients.sort((v1, v2) -> v1.getCalories() - v2.getCalories());
-        view.printIngredientsCalories(ingredients);
-    }
-    /**
-     * Sorts and outputs salads ingredients by cost.
-     * @param ingredients - chosen salad
-     */
-    private void sortByCost(List<Ingredient> ingredients) {
-        ingredients.sort((v1, v2) -> v1.getCost() - v2.getCost());
-        view.printIngredientsCost(ingredients);
-    }
-
-    /**
-     * Calls the method cookSalad() of ChiefCook.
-     * @param chiefCook - instance of ChiefCook with chosen salad
-     */
-    private void cooking(ChiefCook chiefCook) {
-        chiefCook.cookSalad();
-        view.printStringInput(view.SALAD_IS_READY);
-    }
 
     /**
      * Forms main menu from Menu.
+     *
      * @return number of chosen menu line
      */
     private int mainMenu() {
         view.printMessage(view.menuToPrint(Menu.menuToArray()));
         view.concatenationString();
-        view.printStringInput("message.choose.menu");
+        view.printStringInput(view.CHOOSE_MENU);
         return getNumberConsole(1, Menu.menuToArray().length);
 
     }
 
     /**
      * Gets min and max values from console.
+     *
      * @param min - min value
      * @param max - max value
      * @return input number
      */
-    public int getNumberConsole(int min, int max) {
+    private int getNumberConsole(int min, int max) {
         int inputNumber;
         for (; ; ) {
             while (!sc.hasNextInt()) {
