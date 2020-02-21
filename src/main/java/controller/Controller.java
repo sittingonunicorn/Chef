@@ -69,7 +69,7 @@ public class Controller {
         ChiefCook chiefCook = null;
         while (mainMenu == 0) {
             view.printEmptyString();
-            view.printStringInput("message.read.menu");
+            view.printStringInput(view.MENU);
             mainMenu = mainMenu();
             chiefCook = new ChiefCook(Menu.menuToArray()[mainMenu - 1], Menu.getSalad(mainMenu - 1));
         }
@@ -79,7 +79,7 @@ public class Controller {
 
     /**
      * Provides user the choice of acts with chosen salad.
-     * @param chiefCook
+     * @param chiefCook - instance of ChiefCook with chosen salad
      */
     private void infoMenu(ChiefCook chiefCook) {
         view.printStringInput(chiefCook.getName());
@@ -95,8 +95,8 @@ public class Controller {
 
     /**
      * Calls the methods to perform the requested action with salad.
-     * @param infoMenu
-     * @param chiefCook
+     * @param infoMenu - number of chosen menu line
+     * @param chiefCook - instance of ChiefCook with chosen salad
      */
     private void getInfo(int infoMenu, ChiefCook chiefCook) {
         List<Ingredient> ingredients = chiefCook.getSalad();
@@ -129,9 +129,10 @@ public class Controller {
 
     /**
      * Provides menu to choose if program should end its work or continue.
-     * @param chiefCook
+     * @param chiefCook - instance of ChiefCook with chosen salad
      */
     private void endMenu(ChiefCook chiefCook) {
+        view.printEmptyString();
         view.printEndMenu();
         int x = getNumberConsole(0,2);
         if (x == 1) {
@@ -143,7 +144,7 @@ public class Controller {
 
     /**
      * Outputs calorific value of each ingredient.
-     * @param ingredients
+     * @param ingredients - chosen salad
      */
     private void outputCalorificValue(List<Ingredient> ingredients) {
         view.printIntAndStringInput(model.countCalories(ingredients), view.CALORIES_PORTION);
@@ -151,7 +152,7 @@ public class Controller {
 
     /**
      * Outputs the vegetables with calorific values in chosen diapason.
-     * @param ingredients
+     * @param ingredients - chosen salad
      */
     private void outputDiapason(List<Ingredient> ingredients) {
         int min ;
@@ -185,7 +186,7 @@ public class Controller {
 
     /**
      * Sorts and outputs salads ingredients by calorific value.
-     * @param ingredients
+     * @param ingredients - chosen salad
      */
     private void sortByCalories(List<Ingredient> ingredients) {
         ingredients.sort((v1, v2) -> v1.getCalories() - v2.getCalories());
@@ -193,7 +194,7 @@ public class Controller {
     }
     /**
      * Sorts and outputs salads ingredients by cost.
-     * @param ingredients
+     * @param ingredients - chosen salad
      */
     private void sortByCost(List<Ingredient> ingredients) {
         ingredients.sort((v1, v2) -> v1.getCost() - v2.getCost());
@@ -202,7 +203,7 @@ public class Controller {
 
     /**
      * Calls the method cookSalad() of ChiefCook.
-     * @param chiefCook
+     * @param chiefCook - instance of ChiefCook with chosen salad
      */
     private void cooking(ChiefCook chiefCook) {
         chiefCook.cookSalad();
@@ -211,7 +212,7 @@ public class Controller {
 
     /**
      * Forms main menu from Menu.
-     * @return
+     * @return number of chosen menu line
      */
     private int mainMenu() {
         view.printMessage(view.menuToPrint(Menu.menuToArray()));
@@ -223,9 +224,9 @@ public class Controller {
 
     /**
      * Gets min and max values from console.
-     * @param min
-     * @param max
-     * @return
+     * @param min - min value
+     * @param max - max value
+     * @return input number
      */
     public int getNumberConsole(int min, int max) {
         int inputNumber;
