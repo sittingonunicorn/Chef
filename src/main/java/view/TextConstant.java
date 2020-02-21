@@ -7,6 +7,8 @@ public interface TextConstant {
     String WRONG_INPUT_INTERNATIONAL = "Wrong input number. Невірно введений номер.";
     String WRONG_INPUT = "message.input.wrong";
     String GET_INFO_ABOUT_SALAD = "message.get.info";
+    String CALORIES_PORTION = "message.calories.portion";
+    String NO_VEGETABLES_FOUND = "message.no.vegetables.found";
     String SORT_BY_CALORIES = "message.sort.by.calories";
     String SORT_BY_COST = "message.sort.by.cost";
     String SALAD_IS_READY = "message.salad.is.ready";

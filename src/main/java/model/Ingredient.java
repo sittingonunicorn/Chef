@@ -3,7 +3,6 @@ package model;
 
 public class Ingredient {
     private Ingredients name;
-    private Classification classification;
     private int calories;
     private int cost;
     private int quantity;
@@ -11,17 +10,12 @@ public class Ingredient {
     public Ingredient(Ingredients name, int quantity) {
         this.name = name;
         this.calories = name.getCALORIES();
-        this.classification = name.getCLASSIFICATION();
         this.cost = name.getCOST();
         this.quantity = quantity;
     }
 
     public Ingredients getName() {
         return name;
-    }
-
-    public Classification getClassification() {
-        return classification;
     }
 
     public int getCalories() {

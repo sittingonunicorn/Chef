@@ -5,14 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChiefCook {
+    String name;
     private List<Ingredient> salad = new ArrayList<>();
 
-    public ChiefCook(List<Ingredient> salad) {
-
+    public ChiefCook(String name, List<Ingredient> salad) {
+        this.name = name;
         for (Ingredient ingredient :
                 salad) {
             this.salad.add(ingredient);
         }
+    }
+
+    public String getName() {
+        return name;
     }
 
     public List<Ingredient> getSalad() {

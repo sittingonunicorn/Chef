@@ -1,5 +1,8 @@
 package view;
 
+import model.Ingredient;
+
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -34,7 +37,8 @@ public class View implements TextConstant {
     public String concatenationString(String... message) {
         StringBuilder concatString = new StringBuilder();
         for (String v : message) {
-            concatString = concatString.append(bundle.getString(v) + System.lineSeparator());
+            concatString.append(bundle.getString(v));
+            concatString.append(System.lineSeparator());
         }
         return new String(concatString);
     }
@@ -51,16 +55,44 @@ public class View implements TextConstant {
         return new String(concatString);
     }
 
-    public void printMenuLine (int number, String message) {
-        System.out.print(number+". ");
+    public void printMenuLine(int number, String message) {
+        System.out.print(number + ". ");
         printMessage(bundle.getString(message));
     }
 
-    public void printInfoMenu(){
+    public void printInfoMenu() {
         printMenuLine(1, "message.cook");
         printMenuLine(2, "message.sort.by.cost");
         printMenuLine(3, "message.sort.by.calories");
         printMenuLine(4, "message.get.vegetables.calories.diapason");
+        printMenuLine(5, "message.count.calories");
         printMenuLine(0, "message.back.to.main.menu");
+    }
+
+    public void printIngredientsCalories(List<Ingredient> ingredients) {
+        for (Ingredient ingredient : ingredients) {
+            System.out.println(bundle.getString(ingredient.toString()) + ": " + ingredient.getCalories() + bundle.getString("message.calories.100g"));
+        }
+
+
+    }
+
+    public void printIngredientsCost(List<Ingredient> ingredients) {
+        for (Ingredient ingredient : ingredients) {
+            System.out.println(bundle.getString(ingredient.toString()) + ": " + ingredient.getCost() + bundle.getString("message.hrn"));
+        }
+    }
+    public void printIntAndStringInput(int number, String message){
+        System.out.print(number + " ");
+        printStringInput(message);
+    }
+    public void printEmptyString(){
+        System.out.println();
+    }
+
+    public void printEndMenu(){
+        printMenuLine(0, "message.end");
+        printMenuLine(1, "message.back.to.main.menu");
+        printMenuLine(2, "message.back.to.info.menu");
     }
 }

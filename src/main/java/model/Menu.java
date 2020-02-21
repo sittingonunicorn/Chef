@@ -33,27 +33,20 @@ public class Menu {
     }
 
     public static List<Ingredient> getSalad(int number) {
-        List<Ingredient> result;
+        List<Ingredient> result = spicy_salad.getSalad();
         switch (number) {
             case 1:
-                result = spicy_salad.getSalad();
-                break;
-            case 2:
                 result = vinaigrette.getSalad();
                 break;
-            case 3:
+            case 2:
                 result = spring.getSalad();
                 break;
-            default:
-                result = spring.getSalad();
-                ;
         }
         return result;
     }
 
 
     public static String[] menuToArray() {
-        String[] menu = new String[]{spicy_salad.getName(), vinaigrette.getName(), spring.getName()};
-        return menu;
+        return new String[]{spicy_salad.getName(), vinaigrette.getName(), spring.getName()};
     }
 }
