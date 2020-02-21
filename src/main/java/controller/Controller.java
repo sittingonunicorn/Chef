@@ -1,9 +1,9 @@
 package controller;
 
-import model.ChiefCook;
-import model.Ingredient;
-import model.Menu;
-import model.Model;
+import model.service.ChiefCook;
+import model.entity.Ingredient;
+import model.service.Menu;
+import model.service.Model;
 import view.View;
 
 import java.util.List;

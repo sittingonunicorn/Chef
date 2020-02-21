@@ -1,6 +1,6 @@
 package view;
 
-import model.Ingredient;
+import model.entity.Ingredient;
 
 import java.util.List;
 import java.util.Locale;
@@ -50,7 +50,7 @@ public class View implements TextConstant {
     public String menuToPrint(String[] message) {
         StringBuilder concatString = new StringBuilder();
         for (int i = 0; i < message.length; i++) {
-            concatString = concatString.append((i + 1) + ". " + bundle.getString(message[i]) + System.lineSeparator());
+            concatString.append(i + 1).append(". ").append(bundle.getString(message[i])).append(System.lineSeparator());
         }
         return new String(concatString);
     }

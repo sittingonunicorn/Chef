@@ -1,4 +1,4 @@
-package model;
+package model.entity;
 
 public class Vegetable extends Ingredient implements ICuttable {
     private boolean isCut = false;

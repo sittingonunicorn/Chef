@@ -15,7 +15,7 @@
 //12. Должны присутствовать JUnit – тесты.
 
 import controller.Controller;
-import model.Model;
+import model.service.Model;
 import view.View;
 
 public class Main {

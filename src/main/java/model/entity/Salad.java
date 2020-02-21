@@ -1,6 +1,7 @@
-package model;
+package model.entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Salad {
@@ -9,10 +10,8 @@ public class Salad {
 
     public Salad(String name, Ingredient... components) {
         this.name = name;
-        salad = new ArrayList<Ingredient>();
-        for (Ingredient i : components) {
-            this.salad.add(i);
-        }
+        salad = new ArrayList<>();
+        this.salad.addAll(Arrays.asList(components));
     }
 
     public String getName() {

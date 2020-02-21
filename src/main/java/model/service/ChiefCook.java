@@ -1,5 +1,8 @@
-package model;
+package model.service;
 
+
+import model.entity.Ingredient;
+import model.entity.Vegetable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +13,7 @@ public class ChiefCook {
 
     public ChiefCook(String name, List<Ingredient> salad) {
         this.name = name;
-        for (Ingredient ingredient :
-                salad) {
-            this.salad.add(ingredient);
-        }
+        this.salad.addAll(salad);
     }
 
     public String getName() {

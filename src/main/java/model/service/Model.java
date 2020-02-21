@@ -1,4 +1,7 @@
-package model;
+package model.service;
+
+import model.entity.Ingredient;
+import model.entity.Vegetable;
 
 import java.util.ArrayList;
 import java.util.List;

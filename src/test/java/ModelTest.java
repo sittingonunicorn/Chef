@@ -1,4 +1,7 @@
-import model.*;
+import model.entity.Ingredient;
+import model.service.ChiefCook;
+import model.service.Menu;
+import model.service.Model;
 import org.junit.Test;
 
 import java.util.List;

@@ -1,5 +1,10 @@
-package model;
+package model.service;
 
+
+import model.entity.Ingredient;
+import model.entity.Ingredients;
+import model.entity.Salad;
+import model.entity.Vegetable;
 
 import java.util.List;
 

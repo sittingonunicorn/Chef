@@ -1,5 +1,5 @@
 
-package model;
+package model.entity;
 
 public class Ingredient {
     private Ingredients name;
