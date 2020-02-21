@@ -50,4 +50,17 @@ public class View implements TextConstant {
         }
         return new String(concatString);
     }
+
+    public void printMenuLine (int number, String message) {
+        System.out.print(number+". ");
+        printMessage(bundle.getString(message));
+    }
+
+    public void printInfoMenu(){
+        printMenuLine(1, "message.cook");
+        printMenuLine(2, "message.sort.by.cost");
+        printMenuLine(3, "message.sort.by.calories");
+        printMenuLine(4, "message.get.vegetables.calories.diapason");
+        printMenuLine(0, "message.back.to.main.menu");
+    }
 }

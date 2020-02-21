@@ -1,11 +1,15 @@
 package view;
 
 public interface TextConstant {
-    String MENU = "menu";
+    String MENU = "message.read.menu";
     String CHOOSE_ENGLISH = "To choose English please input 1.";
     String CHOOSE_UKRAINIAN = "Щоб обрати українську мову, натисніть 2.";
     String WRONG_INPUT_INTERNATIONAL = "Wrong input number. Невірно введений номер.";
-    String WRONG_INPUT = "input.wrong";
+    String WRONG_INPUT = "message.input.wrong";
+    String GET_INFO_ABOUT_SALAD = "message.get.info";
+    String SORT_BY_CALORIES = "message.sort.by.calories";
+    String SORT_BY_COST = "message.sort.by.cost";
+    String SALAD_IS_READY = "message.salad.is.ready";
     String RUSSIAN_SALAD = "salad.russian";
     String VINAIGRETTE = "salad.vinaigrette";
     String SPRING_SALAD = "salad.spring";

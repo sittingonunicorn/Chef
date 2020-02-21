@@ -42,23 +42,36 @@ public class Controller {
         Scanner sc = new Scanner(System.in);
         this.view.setBundle(selectLanguage(sc));
 
-        view.printStringInput("read.menu");
+        view.printStringInput("message.read.menu");
         Menu menu = new Menu();
-        view.printMessage(view.menuToPrint(menu.menuToArray()));
-        view.concatenationString();
-        view.printStringInput("message.choose.salad");
-        ChiefCook chiefCook = new ChiefCook (Menu.getSalad(getNumberConsole(sc, Menu.menuToArray())));
-        chiefCook.cookSalad();
+        mainMenu(menu, sc);
+
+
+
     }
 
-    public int getNumberConsole(Scanner sc, String [] menu) {
+    private void mainMenu(Menu menu, Scanner sc) {
+
+        view.printMessage(view.menuToPrint(menu.menuToArray()));
+        view.concatenationString();
+        view.printStringInput("message.choose.menu");
+        int result =  getNumberConsole(sc, Menu.menuToArray());
+        view.printStringInput(Menu.menuToArray()[result-1]);
+        view.printInfoMenu();
+
+
+    }
+   // ChiefCook chiefCook = new ChiefCook(Menu.getSalad(getNumberConsole(sc, Menu.menuToArray())));
+    //            chiefCook.cookSalad();
+//            view.printStringInput(view.SALAD_IS_READY);
+    public int getNumberConsole(Scanner sc, String[] menu) {
         int inputNumber;
         for (; ; ) {
             while (!sc.hasNextInt()) {
                 view.printStringInput(View.WRONG_INPUT);
                 sc.next();
             }
-            if ((inputNumber = sc.nextInt())<1||(inputNumber>menu.length)) {
+            if ((inputNumber = sc.nextInt()) < 1 || (inputNumber > menu.length)) {
                 view.printStringInput(View.WRONG_INPUT);
                 continue;
             }

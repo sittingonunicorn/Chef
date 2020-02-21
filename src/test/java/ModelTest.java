@@ -22,9 +22,8 @@ public class ModelTest {
         ChiefCook chiefCook = new ChiefCook(Menu.getSpicySalad());
         chiefCook.cookSalad();
         List<Ingredient> result = model.getVegetablesCaloriesDiapason(chiefCook.getSalad(), 10, 50);
-        for (Ingredient i:
-        result) {
-            System.out.println(i);
+        for (Ingredient i:result) {
+           assertTrue(i.getCalories()>=10&&i.getCalories()<=50);
         }
         assertNotNull(result);
     }

@@ -14,6 +14,7 @@ public class Model {
         }
         return (int)calories;
     }
+
     public List<Ingredient> getVegetablesCaloriesDiapason (List<Ingredient> salad, int min, int max){
         List<Ingredient> result = new ArrayList<>();
         for (Ingredient ingredient: salad) {
