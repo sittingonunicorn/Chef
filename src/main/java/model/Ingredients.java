@@ -1,8 +1,6 @@
 package model;
 
 
-import java.util.Comparator;
-
 public enum Ingredients {
     GREEN_PEAS("vegetable.green.peas", 72, 5),
     ZUCCHINI("vegetable.zucchini", 27, 7),
@@ -21,7 +19,6 @@ public enum Ingredients {
     TOMATOES("vegetable.tomatoes", 19, 5),
     GREEN_BEANS("vegetable.green.beans", 32, 4),
     GARLIC("vegetable.garlic", 106, 8),
-    MUSTARD("flavoring.mustard", 143, 15),
     MAYONNAISE("flavoring.mayonnaise", 629, 8),
     OREGANO("flavoring.oregano", 265, 25),
     ROSEMARY("flavoring.rosemary", 331, 20),
@@ -38,8 +35,8 @@ public enum Ingredients {
 
     Ingredients(String name, int CALORIES, int cost) {
         this.name = name;
-         this.CALORIES = CALORIES;
-        COST = cost;
+        this.CALORIES = CALORIES;
+        this.COST = cost;
     }
 
 
@@ -56,5 +53,5 @@ public enum Ingredients {
         return this.name;
     }
 
-    }
+}
 

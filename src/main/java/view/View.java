@@ -61,12 +61,12 @@ public class View implements TextConstant {
     }
 
     public void printInfoMenu() {
-        printMenuLine(1, "message.cook");
-        printMenuLine(2, "message.sort.by.cost");
-        printMenuLine(3, "message.sort.by.calories");
-        printMenuLine(4, "message.get.vegetables.calories.diapason");
-        printMenuLine(5, "message.count.calories");
-        printMenuLine(0, "message.back.to.main.menu");
+        printMenuLine(1, COOK);
+        printMenuLine(2, SORT_BY_COST);
+        printMenuLine(3, SORT_BY_CALORIES);
+        printMenuLine(4, GET_VEGETABLES_DIAPASON);
+        printMenuLine(5, COUNT_CALORIES);
+        printMenuLine(0, BACK_TO_MAIN_MENU);
     }
 
     public void printIngredientsCalories(List<Ingredient> ingredients) {
