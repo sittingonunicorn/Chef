@@ -4,9 +4,9 @@ package model;
 import java.util.List;
 
 public class Menu {
-    static Salad spicy_salad;
-    static Salad vinaigrette;
-    static Salad spring;
+    private final static Salad spicy_salad;
+    private final static Salad vinaigrette;
+    private final static Salad spring;
 
     static {
         spicy_salad = new Salad("salad.spicy", new Vegetable(Ingredients.SWEET_RED_PEPPER, 30, false),
@@ -32,16 +32,28 @@ public class Menu {
         return spicy_salad.getSalad();
     }
 
-    public static List<Ingredient> getVinaigrette() {
-        return vinaigrette.getSalad();
+    public static List<Ingredient> getSalad(int number) {
+        List<Ingredient> result;
+        switch (number) {
+            case 1:
+                result = spicy_salad.getSalad();
+                break;
+            case 2:
+                result = vinaigrette.getSalad();
+                break;
+            case 3:
+                result = spring.getSalad();
+                break;
+            default:
+                result = spring.getSalad();
+                ;
+        }
+        return result;
     }
 
-    public static List<Ingredient> getSpring() {
-        return spring.getSalad();
-    }
 
-    public static String[] menuToArray(){
-        String [] menu = new String[]{spicy_salad.getName(), vinaigrette.getName(), spring.getName()};
+    public static String[] menuToArray() {
+        String[] menu = new String[]{spicy_salad.getName(), vinaigrette.getName(), spring.getName()};
         return menu;
     }
 }

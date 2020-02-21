@@ -1,5 +1,6 @@
 package controller;
 
+import model.ChiefCook;
 import model.Menu;
 import model.Model;
 import view.View;
@@ -21,7 +22,7 @@ public class Controller {
         view.printMessage(View.CHOOSE_UKRAINIAN);
         for (; ; ) {
             while (!sc.hasNext()) {
-                view.printMessage(View.WRONG_INPUT);
+                view.printMessage(View.WRONG_INPUT_INTERNATIONAL);
                 view.printMessage(View.CHOOSE_ENGLISH);
                 view.printMessage(View.CHOOSE_UKRAINIAN);
                 sc.next();
@@ -43,10 +44,27 @@ public class Controller {
 
         view.printStringInput("read.menu");
         Menu menu = new Menu();
-        view.printMessage(view.concatenationString(menu.menuToArray()));
+        view.printMessage(view.menuToPrint(menu.menuToArray()));
         view.concatenationString();
         view.printStringInput("message.choose.salad");
+        ChiefCook chiefCook = new ChiefCook (Menu.getSalad(getNumberConsole(sc, Menu.menuToArray())));
+        chiefCook.cookSalad();
     }
 
+    public int getNumberConsole(Scanner sc, String [] menu) {
+        int inputNumber;
+        for (; ; ) {
+            while (!sc.hasNextInt()) {
+                view.printStringInput(View.WRONG_INPUT);
+                sc.next();
+            }
+            if ((inputNumber = sc.nextInt())<1||(inputNumber>menu.length)) {
+                view.printStringInput(View.WRONG_INPUT);
+                continue;
+            }
+            break;
+        }
+        return inputNumber;
 
+    }
 }

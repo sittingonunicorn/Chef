@@ -3,7 +3,7 @@ package view;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class View implements  TextConstant{
+public class View implements TextConstant {
     static final String MESSAGES_BUNDLE_NAME = "messages";
     private ResourceBundle bundle;
 
@@ -34,12 +34,20 @@ public class View implements  TextConstant{
     public String concatenationString(String... message) {
         StringBuilder concatString = new StringBuilder();
         for (String v : message) {
-            concatString = concatString.append(bundle.getString(v)+System.lineSeparator());
+            concatString = concatString.append(bundle.getString(v) + System.lineSeparator());
         }
         return new String(concatString);
     }
 
     public void printStringInput(String message) {
-        printMessage( bundle.getString(message));
+        printMessage(bundle.getString(message));
+    }
+
+    public String menuToPrint(String[] message) {
+        StringBuilder concatString = new StringBuilder();
+        for (int i = 0; i < message.length; i++) {
+            concatString = concatString.append((i + 1) + ". " + bundle.getString(message[i]) + System.lineSeparator());
+        }
+        return new String(concatString);
     }
 }

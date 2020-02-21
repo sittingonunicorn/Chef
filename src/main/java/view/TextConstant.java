@@ -4,7 +4,8 @@ public interface TextConstant {
     String MENU = "menu";
     String CHOOSE_ENGLISH = "To choose English please input 1.";
     String CHOOSE_UKRAINIAN = "Щоб обрати українську мову, натисніть 2.";
-    String WRONG_INPUT = "Wrong input. Невірний ввод";
+    String WRONG_INPUT_INTERNATIONAL = "Wrong input number. Невірно введений номер.";
+    String WRONG_INPUT = "input.wrong";
     String RUSSIAN_SALAD = "salad.russian";
     String VINAIGRETTE = "salad.vinaigrette";
     String SPRING_SALAD = "salad.spring";
