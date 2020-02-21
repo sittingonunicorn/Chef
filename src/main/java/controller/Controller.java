@@ -1,6 +1,5 @@
 package controller;
 
-import model.ChiefCook;
 import model.Menu;
 import model.Model;
 import view.View;
@@ -28,7 +27,7 @@ public class Controller {
                 sc.next();
             }
             if (!((inputString = sc.nextLine()).equals("1") || inputString.equals("2"))) {
-                view.printMessage(View.WRONG_INPUT);
+                view.printMessage(View.WRONG_INPUT_INTERNATIONAL);
                 view.printMessage(View.CHOOSE_ENGLISH);
                 view.printMessage(View.CHOOSE_UKRAINIAN);
                 continue;
@@ -41,30 +40,36 @@ public class Controller {
     public void processUser() {
         Scanner sc = new Scanner(System.in);
         this.view.setBundle(selectLanguage(sc));
-
+        int mainMenu = 0;
+        while(mainMenu == 0){
         view.printStringInput("message.read.menu");
         Menu menu = new Menu();
-        mainMenu(menu, sc);
-
-
+        int infoMenu = mainMenu(menu, sc);
+        view.printStringInput(Menu.menuToArray()[infoMenu - 1]);
+            mainMenu = infoMenu(sc, menu);}
 
     }
 
-    private void mainMenu(Menu menu, Scanner sc) {
+    private int infoMenu(Scanner sc, Menu menu) {
+        view.printInfoMenu();
+        int infoMenu = getNumberConsoleInfo(sc);
+        return infoMenu;
+    }
+
+    private int mainMenu(Menu menu, Scanner sc) {
 
         view.printMessage(view.menuToPrint(menu.menuToArray()));
         view.concatenationString();
         view.printStringInput("message.choose.menu");
-        int result =  getNumberConsole(sc, Menu.menuToArray());
-        view.printStringInput(Menu.menuToArray()[result-1]);
-        view.printInfoMenu();
-
+        int result = getNumberConsoleMain(sc, Menu.menuToArray());
+        return result;
 
     }
-   // ChiefCook chiefCook = new ChiefCook(Menu.getSalad(getNumberConsole(sc, Menu.menuToArray())));
+
+    // ChiefCook chiefCook = new ChiefCook(Menu.getSalad(getNumberConsole(sc, Menu.menuToArray())));
     //            chiefCook.cookSalad();
 //            view.printStringInput(view.SALAD_IS_READY);
-    public int getNumberConsole(Scanner sc, String[] menu) {
+    public int getNumberConsoleMain(Scanner sc, String[] menu) {
         int inputNumber;
         for (; ; ) {
             while (!sc.hasNextInt()) {
@@ -72,6 +77,23 @@ public class Controller {
                 sc.next();
             }
             if ((inputNumber = sc.nextInt()) < 1 || (inputNumber > menu.length)) {
+                view.printStringInput(View.WRONG_INPUT);
+                continue;
+            }
+            break;
+        }
+        return inputNumber;
+
+    }
+
+    public int getNumberConsoleInfo(Scanner sc) {
+        int inputNumber;
+        for (; ; ) {
+            while (!sc.hasNextInt()) {
+                view.printStringInput(View.WRONG_INPUT);
+                sc.next();
+            }
+            if ((inputNumber = sc.nextInt()) < 0 || (inputNumber > 4)) {
                 view.printStringInput(View.WRONG_INPUT);
                 continue;
             }
