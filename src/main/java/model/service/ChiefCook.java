@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChiefCook {
-    String name;
+    private String name;
     private List<Ingredient> salad = new ArrayList<>();
 
     public ChiefCook(String name, List<Ingredient> salad) {
