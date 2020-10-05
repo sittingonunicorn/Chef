@@ -1,0 +1,15 @@
+model\Model.class
+controller\Controller.class
+model\Classification.class
+view\View.class
+model\Ingredients$ClassificationComparator.class
+model\Ingredient.class
+model\ICuttable.class
+model\Ingredients.class
+Main.class
+model\Menu.class
+model\ChiefCook.class
+model\Vegetable.class
+model\Color.class
+view\TextConstant.class
+model\Salad.class

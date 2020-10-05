@@ -27,7 +27,7 @@ public class Menu {
                 new Ingredient(Ingredients.PARSLEY, 10), new Ingredient(Ingredients.SALT, 5),
                 new Ingredient(Ingredients.OIL, 20));
         SPRING = new Salad("salad.spring", new Vegetable(Ingredients.TOMATOES, 130, false),
-                new Vegetable(Ingredients.WHITE_CABBAGE, 50, false), new Vegetable(Ingredients.CARROT, 25, false),
+                new Vegetable(Ingredients.WHITE_CABBAGE, 30, false), new Vegetable(Ingredients.CARROT, 25, false),
                 new Vegetable(Ingredients.BULB_ONIONS, 10, false), new Vegetable(Ingredients.CUCUMBERS, 15, false),
                 new Vegetable(Ingredients.GREEN_ONION, 10, false), new Vegetable(Ingredients.RADISH, 10, false),
                 new Ingredient(Ingredients.PEPPER, 5), new Ingredient(Ingredients.MAYONNAISE, 10));
